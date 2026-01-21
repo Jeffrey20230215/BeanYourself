@@ -1,0 +1,44 @@
+.by-logo-wrapper {
+  display: inline-flex; /* 改為 inline-flex 讓它不會預設佔滿整行 */
+  align-items: center;
+  font-family: "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+  /* 確保外觀不被外部 CSS 影響 */
+  box-sizing: border-box;
+  text-decoration: none; /* 如果被包在 a tag 裡可消除底線 */
+}
+
+/* 左側黑色方塊 B.Y. */
+.by-logo-box {
+  background-color: #2b241f; /* 深棕黑 */
+  color: #f7f1ea;
+  padding: 0.25rem 0.75rem;
+  margin-right: 12px;
+  font-weight: 900;
+  font-size: 21px;
+  line-height: 1;
+}
+
+/* 右側文字容器 */
+.by-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #2b241f;
+}
+
+/* 中文：豆自己 */
+.by-chinese {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+/* 英文：BEAN YOURSELF */
+.by-english {
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}

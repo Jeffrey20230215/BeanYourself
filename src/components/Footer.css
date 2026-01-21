@@ -1,0 +1,85 @@
+.siteFooter {
+  padding: 60px 312px; /* 留白 */
+  background-color: #e6d5c3;
+  box-sizing: border-box; /* 確保 padding 不會撐破寬度 */
+}
+
+/* 2. 新增：用這個容器來包住內容，限制內容寬度並置中 */
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 56px; /* 左右內距，避免內容貼齊邊緣 */
+  box-sizing: border-box;
+  gap: 40px;
+}
+
+/* 3. 讓上方區塊左右排版 (左邊 Logo/Link，右邊大標題) */
+.footerTop {
+  display: flex;
+  justify-content: space-between; /* 左右推開 */
+  align-items: flex-start; /* 靠上對齊 */
+  gap: 40px;
+}
+
+/* 左側介紹區塊 */
+.footerIntro {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  font-weight: 400;
+  gap: 40px; /* Logo 和連結之間的間距 */
+}
+
+/* 連結區塊樣式修正 */
+.footerLink {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  font-family: sans-serif;
+  gap: 40px; /* 兩組連結之間的間距 */
+}
+
+.footerLink a {
+  display: flex;
+  text-decoration: none; /* 去除底線 */
+  color: #2d241e;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* 右側大標題樣式 */
+.footerLogo h1 {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 143px; /* 字要夠大 */
+  font-weight: 900;
+  padding-bottom: 56px;
+  line-height: 120%;
+  color: #f7f1ea; /* 設定透明度，做成浮水印效果 */
+  margin: 0;
+  text-align: right;
+}
+
+/* 下方版權區塊 */
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.copyRight {
+  font-weight: 500;
+  font-size: 12px;
+  color: #a69f98;
+}
+
+.contactLink a {
+  font-family: sans-serif;
+  margin-left: 35px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 14.4px;
+  text-decoration: none;
+  color: #2d241e;
+  font-weight: bold;
+}

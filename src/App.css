@@ -40,3 +40,21 @@
 .read-the-docs {
   color: #888;
 }
+
+/*增加強制擴增大小*/
+/* 強制重置瀏覽器預設邊距 */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw; /* 確保視窗全寬 */
+  overflow-x: hidden; /* 防止水平捲軸 */
+}
+
+/* 解除 Vite 預設的 #root 鎖定 */
+#root {
+  max-width: 100% !important; /* 原本可能是 1280px */
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important; /* 原本可能是 center */
+}
