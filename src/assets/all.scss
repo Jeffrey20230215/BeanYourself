@@ -3,3 +3,51 @@
 @import './variables';
 
 @import 'bootstrap/scss/bootstrap';
+
+$coffee-colors: (
+    "01": #F7F1EA,
+    "02": #EDE7E0,
+    "03": #E3DDD6,
+    "04": #E6D5C3,
+    "05": #D9D2CB,
+    "06": #CFC8C1,
+    "07": #BAB4AD,
+    "08": #A69F98,
+    "09": #928B84,
+    "10": #7E7670,
+    "11": #6A625B,
+    "12": #554D47,
+    "13": #2D241E
+);
+$body-bg: map-get($coffee-colors, "01");
+
+@each $num, $color in $coffee-colors {  
+    .text-primary-#{$num} {
+        color: $color !important;
+    }  
+    .bg-primary-#{$num} {
+        background-color: $color !important;
+    }  
+    .border-primary-#{$num} {
+        border-color: $color !important;
+    }
+}
+
+
+.ls-1 { letter-spacing: 0.05em !important; } 
+.ls-2 { letter-spacing: 0.1em !important; }  
+.ls-3 { letter-spacing: 0.2em !important; }  
+
+@include media-breakpoint-up(md) {
+  .border-md-start-0 {
+    border-left: 0 !important;
+  }
+}
+
+.img-grayscale-md {  
+  filter: grayscale(0%);
+  
+  @media (min-width: 768px) {
+    filter: grayscale(100%);
+  }
+}

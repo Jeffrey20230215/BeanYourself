@@ -46,7 +46,9 @@ $yellow:  #ffc107 !default;
 $green:   #198754 !default;
 $teal:    #20c997 !default;
 $cyan:    #0dcaf0 !default;
+$coffee-cream: #F7F1EA;
 // scss-docs-end color-variables
+
 
 // scss-docs-start colors-map
 $colors: (
@@ -298,7 +300,7 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary:       $blue !default;
+$primary:       $coffee-cream !default;
 $secondary:     $gray-600 !default;
 $success:       $green !default;
 $info:          $cyan !default;
@@ -414,7 +416,22 @@ $spacers: (
   2: $spacer * .5,
   3: $spacer,
   4: $spacer * 1.5,
-  5: $spacer * 3,
+  5: $spacer * 2,
+  6: $spacer * 2.5,
+  7: $spacer * 3,
+  8: $spacer * 3.5,
+  9: $spacer * 4,
+  10: $spacer * 4.5,
+  11: $spacer * 5,
+  12: $spacer * 5.5,
+  13: $spacer * 6,
+  14: $spacer * 6.5,
+  15: $spacer * 7,
+  16: $spacer * 7.5,
+  17: $spacer * 8,
+  18: $spacer * 8.5,
+  19: $spacer * 9,
+  20: $spacer * 9.5
 ) !default;
 // scss-docs-end spacer-variables-maps
 
@@ -603,7 +620,7 @@ $aspect-ratios: (
 
 // scss-docs-start font-variables
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:      "Noto Sans TC", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 // stylelint-enable value-keyword-case
 $font-family-base:            var(--#{$prefix}font-sans-serif) !default;
@@ -622,7 +639,7 @@ $font-weight-normal:          400 !default;
 $font-weight-medium:          500 !default;
 $font-weight-semibold:        600 !default;
 $font-weight-bold:            700 !default;
-$font-weight-bolder:          bolder !default;
+$font-weight-bolder:          900 !default;
 
 $font-weight-base:            $font-weight-normal !default;
 
