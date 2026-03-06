@@ -1,5 +1,19 @@
 @import 'bootstrap/scss/functions';
-
 @import './variables';
-
+@import "./ds_tokens"; // 確保變數在此引入
 @import 'bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&display=swap');
+
+.custom-container {
+  width: 100%;
+  max-width: $ds-container-max; // 鎖定 1296px
+  margin: 0 auto;               // 置中
+  padding: 0 15px;
+}
+
+body {
+  @include ds-t7; 
+  background-color: $ds-bg-cream;
+  color: $ds-text-main;
+}
