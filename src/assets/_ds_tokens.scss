@@ -35,6 +35,14 @@ $ds-section-padding: 80px 0;
 // --- 3. 字體架構 (Typography) ---
 $ds-font-family: 'Noto Sans', sans-serif;
 
+//Display (更大的字體，用來吸引目光的)
+$ds-display-1: 240px;  $ds-lh-d1: 120%;
+$ds-display-2: 140px;  $ds-lh-d2: 120%;
+$ds-display-3: 96px;  $ds-lh-d3: 120%;
+$ds-display-4: 64px;  $ds-lh-d4: 120%;
+$ds-display-2: 32px;  $ds-lh-d2: 120%;
+
+
 // Heading 數值 (H1-H9)
 $ds-fs-h1: 40px;  $ds-lh-h1: 48px;
 $ds-fs-h2: 32px;  $ds-lh-h2: 38.4px;
@@ -61,12 +69,47 @@ $ds-fs-t9: 12px;  $ds-lh-t9: 18px;
 $ds-fw-black: 900;
 $ds-fw-bold: 700;
 $ds-fw-normal: 500;
+$ds-fw-light: 300;
 
 // --- 4. 組合 Mixins (排版組合包) ---
 // 建立目的：確保字級與行高成對，且統一字體。
 // 電腦抓取邏輯：當你呼叫 @include ds-h1 時，它會展開這 4 行屬性。
 //有缺的看是缺哪個可以自己新增
 
+
+//超大字體
+@mixin ds-display-d1 {
+  font-size: $ds-display-1;
+  line-height: $ds-lh-d1;
+  font-weight: $ds-fw-black;
+  letter-spacing: -0.02em;
+}
+@mixin ds-display-d2 {
+  font-size: $ds-display-2;
+  line-height: $ds-lh-d2;
+  font-weight: $ds-fw-black;
+  letter-spacing: 0em;
+}
+@mixin ds-display-d3 {
+  font-size: $ds-display-3;
+  line-height: $ds-lh-d3;
+  font-weight: $ds-fw-black;
+  letter-spacing: 0em;
+}
+@mixin ds-display-d4 {
+  font-size: $ds-display-4;
+  line-height: $ds-lh-d4;
+  font-weight: $ds-fw-black;
+  letter-spacing: 0em;
+}
+@mixin ds-display-d5 {
+  font-size: $ds-display-5;
+  line-height: $ds-lh-d5;
+  font-weight: $ds-fw-light;
+  letter-spacing: 0em;
+}
+
+//標題
 @mixin ds-h1 {
   font-family: $ds-font-family;
   font-size: $ds-fs-h1;
@@ -100,6 +143,16 @@ $ds-fw-normal: 500;
   font-weight: $ds-fw-black;
   letter-spacing: 0.1em;
 }
+
+
+//內文
+@mixin ds-t6 {
+  font-family: $ds-font-family; 
+  font-size: $ds-fs-t6; 
+  line-height: $ds-lh-t6; 
+  font-weight: $ds-fw-bold;
+}
+
 @mixin ds-t7 {
   font-family: $ds-font-family; 
   font-size: $ds-fs-t7; 
