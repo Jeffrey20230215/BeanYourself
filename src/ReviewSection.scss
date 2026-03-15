@@ -1,0 +1,90 @@
+.review-section {
+  background-color: #F7F1EA;
+  padding: 120px 0;
+  font-family: serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
+  .main-title {
+    font-size: 64px;
+    font-weight: bold;
+    color: #2D241E;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .sub-title {
+    color: #7E7670;
+    font-size: 18px;
+    line-height: 27px;
+    max-width: 558px;
+    margin-left: auto;
+    margin-bottom: 0;
+    font-weight: bold; // 依據先前 Figma 建議增加
+  }
+
+  .review-card {
+    border-left: 4px solid #2D241E;
+    padding: 8px 24px; // 修正了原本 8 缺少單位的問題
+    height: 281px;
+
+    .card-title {
+      font-weight: bold;
+      color: #2D241E;
+      margin-bottom: 5px;
+    }
+
+    .stars {
+      color: #2D241E;
+      font-size: 1.2rem;
+    }
+
+    .category {
+      color: #A69F98;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .content {
+      color: #2D241E;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 40px;
+      min-height: 100px;
+    }
+
+    .user-info {
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 16px;
+        margin-right: 12px;
+        object-fit: cover;
+      }
+
+      .author-name {
+        font-weight: bold;
+        font-size: 0.85rem;
+        color: #2C231E;
+      }
+
+      .date {
+        color: #A69F98;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .view-all-link {
+    color: #2C231E;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid #2C231E;
+    padding-bottom: 3px;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
