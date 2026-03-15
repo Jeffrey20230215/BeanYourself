@@ -1,91 +1,123 @@
-@import './assets/ds_tokens';
+@import './assets/ds_tokens'; 
+
 .review-section {
-  background-color: #F7F1EA;
+  background-color: $ds-bg-cream; 
   padding: 120px 0;
-  font-family: serif;
   min-height: 100vh;
   display: flex;
   align-items: center;
 
-  .main-title {
-    font-size: 64px;
-    font-weight: bold;
-    color: #2D241E;
-    line-height: 1.1;
-    margin: 0;
-  }
+  .heading-row {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-end;        
+    margin-bottom: 48px;          
+    width: 100%;
 
-  .sub-title {
-    color: #7E7670;
-    font-size: 18px;
-    line-height: 27px;
-    max-width: 558px;
-    margin-left: auto;
-    margin-bottom: 0;
-    font-weight: bold; // 依據先前 Figma 建議增加
+    .main-title {
+      color: $ds-text-main;
+      @include ds-display-d4; 
+      margin: 0;
+      line-height: 1.2;
+
+      .highlight { color: $ds-primary-10; }
+    }
+
+    .sub-title {
+      color: $ds-text-muted;
+      @include ds-t6; 
+      max-width: 558px;       // Figma 標註寬度
+      margin: 0;              
+      text-align: right;      // Figma 標註右對齊
+      line-height: 27px;      // Figma 標註高度
+    }
   }
 
   .review-card {
-    border-left: 4px solid #2D241E;
-    padding: 8px 24px; // 修正了原本 8 缺少單位的問題
-    height: 281px;
+    border-left: 4px solid #2D241E; // Figma: Primary/13 (#2D241E)
+    padding: 8px 24px;              // Figma: Top 8px, Side 24px
+    width: 448px;                   // Figma: Fixed 448px
+    height: 281px;                  // Figma: Fixed 281px
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
 
+    // 1. 產品名稱與星星間距 (Gap: 4px)
     .card-title {
-      font-weight: bold;
-      color: #2D241E;
-      margin-bottom: 5px;
+      color: $ds-text-main;
+      @include ds-t8-bold; 
+      margin-bottom: 4px;           // Figma: product name 下方 Gap 4px
+      line-height: 17px;            // Figma: 17px
     }
 
+    // 2. 星星區域 (Gap: 4px)
     .stars {
-      color: #2D241E;
-      font-size: 1.2rem;
+      display: flex;     
+      gap: 4.31px;                  // Figma: 星星間距 4.31px
+      margin-bottom: 4px;           // Figma: rating 下方 Gap 4px
+      height: 20px;                 // Figma: 20px
+      align-items: center;
+
+      img {
+        width: 11.37px;             // Figma: 11.37px
+        height: 10.83px;            // Figma: 10.83px
+      }
     }
 
+    // 3. 分類與內容間距 (Gap: 16px)
     .category {
-      color: #A69F98;
-      font-size: 14px;
-      margin-bottom: 25px;
+      color: $ds-text-light;
+      @include ds-t8; 
+      margin-bottom: 16px;          // Figma: attribute 下方 Gap 16px
+      line-height: 21px;            // Figma: 21px
     }
 
+    // 4. 內容區塊
     .content {
-      color: #2D241E;
-      font-size: 16px;
-      line-height: 24px;
-      margin-bottom: 40px;
-      min-height: 100px;
+      color: $ds-text-main;
+      @include ds-t7; 
+      margin-bottom: 0;
+      flex-grow: 1;                 // 撐開空間，推擠用户信息
+      line-height: 1.5;
     }
 
+    // 5. 內容與頭像間距 (Gap: 32px)
     .user-info {
+      display: flex;
+      align-items: center;
+      margin-top: 32px;             // Figma: Gap 32px
+      padding-bottom: 8px;          // 為了對齊邊界 padding
+
       .avatar {
         width: 32px;
         height: 32px;
-        border-radius: 16px;
+        border-radius: 50%;
         margin-right: 12px;
         object-fit: cover;
       }
 
       .author-name {
-        font-weight: bold;
-        font-size: 0.85rem;
-        color: #2C231E;
+        color: $ds-text-main;
+        @include ds-t8-bold;
+        margin-bottom: 0;
       }
 
       .date {
-        color: #A69F98;
-        font-size: 12px;
+        color: $ds-text-light;
+        @include ds-t9; 
       }
     }
   }
 
   .view-all-link {
-    color: #2C231E;
-    font-weight: bold;
+    color: $ds-text-main;
+    @include ds-t8-bold;
     text-decoration: none;
-    border-bottom: 2px solid #2C231E;
+    border-bottom: 2px solid $ds-primary-dark;
     padding-bottom: 3px;
+    transition: $ds-transition; 
+    display: inline-block;
     
-    &:hover {
-      opacity: 0.8;
-    }
+    &:hover { opacity: 0.8; }
   }
 }
