@@ -1,0 +1,264 @@
+// ProductMain.scss
+@import "./assets/ds_tokens"; // [修正] 指向正確的 assets 資料夾路徑
+
+.product-main-section {
+  background-color: $ds-bg-cream;
+  padding: $ds-section-padding; // 使用系統定義的 80px 0
+  width: 100%;
+}
+
+// 容器邏輯已在 all.scss 統一處理 (1296px 置中)，這裡不需再寫 max-width 或 calc
+.custom-container {
+  //麵包屑導航
+  .breadcrumb-nav {
+    @include ds-t8; // 帶入 14px / 21px
+    color: $ds-text-muted; //帶入設計系統顏色
+    text-align: left; //靠左對齊
+    margin-bottom: 24px; //下面的間距
+  }
+}
+
+// 圖片展示區
+.image-gallery {
+  display: flex;       // 確保縮圖群與大圖水平並排
+  gap: 24px;           // 縮圖群與大圖之間的間距
+
+  .thumbnail-group {
+    display: flex;          // [新增] 開啟 Flex 佈局以啟用 gap
+    flex-direction: column; // [新增] 確保縮圖由上而下垂直排列
+    gap: 16px;              // [新增] 精確設定每張小圖間距為 16px
+    flex-shrink: 0;         // 預防縮圖被擠壓
+
+    .thumb-item {
+      width: 86px;
+      height: 86px;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: $ds-transition;
+      overflow: hidden;
+
+      img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        opacity: 0.4; // 預設為 40% 不透明度
+        transition: $ds-transition; // 確保透明度變換平滑
+      }
+
+      // 滑鼠懸浮 (Hover) 狀態
+      &:hover img {
+        opacity: 0.7; // 懸浮時稍微變亮 (70%)
+      }
+
+      // 被選取 (Active) 狀態
+      &.active { 
+        border-color: $ds-primary-dark; // 選取時顯示褐色邊框
+        
+        // 被選取時，圖片恢復全亮 (100% 不透明)
+        img { opacity: 1; } 
+      }
+    }
+  }
+
+  .main-image-wrapper {
+    width: 100%;
+    max-width: 636px; // 鎖定設計稿主圖寬度
+    aspect-ratio: 1 / 1; //height: 636px<-原本的寫法，但因為RWD的關係會出現白邊，所以讓他固定比例
+    border: 1.5px solid $ds-primary-dark;
+    background-color: $ds-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .main-img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; //cover會填滿整個方形，在調整網頁寬度時不會有白邊。contain 會有白邊
+    }
+  }
+}
+
+
+
+// 資訊區塊
+.product-info {
+  padding-left: 40px; // 增加圖片與文字間的呼吸感
+
+  //商品的標題
+  .product-title {
+    @include ds-h1;
+    color: $ds-primary-dark;
+    margin-bottom: 12px; //下面的間距
+  }
+
+  //風味標籤
+  .flavor-tags {
+    display: flex; // 確保容器是 flex，消除 inline-block 可能產生的字元空白
+    flex-wrap: wrap; 
+
+    .flavor-tag {
+      @include ds-h9; 
+      background-color: $ds-tag-gray;
+      color: $ds-primary-dark;
+      padding: 4px; 
+      display: inline-block; //AI說確保不會重疊所設定的，拿掉沒變化
+      margin-right: 8px; //標籤間距
+      border-radius: 0;  //直角外觀
+
+      // 預防最後一個標籤也推開間距，導致與上方標題右側不齊
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  //商品描述
+  .product-description {
+    @include ds-t8;
+    color: $ds-text-muted;
+    max-width: 100%;
+    margin-top: 12px; //跟上方的間距
+  }
+
+  // --- 1. 類別標題與群組結構 ---
+  .selection-group {
+    margin-bottom: 32px; // “標題+按鈕”（每個選項）與下一組的距離
+    text-align: left;    // 標題與按鈕靠左對齊
+
+    &:last-of-type {
+      margin-bottom: 40px; // “研磨度”與購物車按鈕的距離
+    }
+
+      //所有類別標籤樣式（咖啡人格推薦度、重量規格、研磨度）
+    .selection-label {
+      @include ds-t8;
+      color: $ds-text-light;
+      margin-bottom: 8px;    // 標題跟下方內容的間距
+      margin-top: 0;
+      display: block;         // 確保標題獨佔一行
+    }
+  }
+
+  // --- 2. 人格推薦區塊 ---
+  .personality-recommend {
+    
+    //RWD設定
+    .recommend-grid {
+      display: flex;
+      flex-wrap: wrap; // 確保寬度不夠時，標籤會自動整齊換行
+      gap: 16px 40px;  //16px 是上下行間距，40px 是左右間距
+    }
+
+    //咖啡豆icon
+    .recommend-item {
+      display: flex;
+      align-items: center;
+      gap: 12px; //跟咖啡豆icon的間距
+      
+      //咖啡豆icon
+      .bean-icons {
+        .bean-svg {
+          width: 16px;   // 咖啡豆icon的大小
+          height: auto;  // 確保等比例縮放
+          display: block; // 確保圖片渲染穩定
+        }
+      }
+
+      //咖啡豆人格標籤
+      .recommend-label {
+        @include ds-h9;
+        background-color: $ds-tag-gray;
+        color: $ds-primary-dark;
+        padding: 4px;
+        display: inline-block;
+      }
+    }
+  }
+
+  // --- 3. 選項按鈕樣式 ---
+  .opt-btn {
+    @include ds-h8;
+    padding: 13.5px 20px; //按鈕裡面的寬度
+    border: 1px solid $ds-primary-dark; //按鈕預設樣式（線條顏色）
+    border-radius: 0; //按鈕的圓角樣式
+    transition: $ds-transition;
+    &:hover { background: rgba($ds-primary-dark, 0.05); }//滑鼠懸浮
+    &.active {//選中時
+      background-color: $ds-primary-dark !important; // 填滿深褐色
+      color: $ds-bg-cream !important; // 文字反白
+      border-color: $ds-primary-dark; // 確保邊框色一致
+    }
+  }
+
+  // --- 4. 數量與購物車 ---
+  .purchase-footer {
+    display: flex;
+    align-items: center; // [關鍵] 確保左右兩組元件「垂直置中」對齊
+    gap: 42px;           // [對齊設計稿] 設定兩組按鈕之間的間距為 42px
+    margin-top: 40px;
+  }
+
+  .quantity-selector {
+    height: 52px; //+-按鈕高度
+    width: 130px; // +-按鈕寬度
+    border: 1px solid $ds-tag-gray; // +-邊框
+    background-color: rgba(255, 255, 255, 0.8); //白色有透明度
+    display: flex;
+    justify-content: center; // 置中對齊內部的按鈕與數字
+    align-items: center;
+    overflow: hidden; // 確保 hover 效果不超出容器
+
+    button {
+      width: 32px;      
+      height: 32px;
+      border: none;
+      background: none;
+      font-size: 18px; 
+      color: $ds-primary-dark;
+      transition: $ds-transition; // 確保是變數，解決 Vite 報錯
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      padding: 0; // 移除預設內距
+      &:hover { background-color: rgba($ds-primary-dark, 0.05); }
+    }
+    input { 
+      width: 42px;
+      height: 36px;
+      border: none;
+      text-align: center;
+      @include ds-t7; 
+      font-weight: $ds-fw-bold;
+      color: $ds-primary-dark;
+      background: transparent;
+      margin: 0 5px; // 與左右按鈕保持微小間距
+      &:focus { outline: none; } // 移除點擊時的藍色外框 
+    }
+  }
+
+  //加入購物車按鈕
+  .add-to-cart-btn {
+    @include ds-t7; 
+    height: 60px;
+    width:322px;
+    background-color: $ds-primary-dark !important;
+    color: $ds-white !important;
+    font-weight: $ds-fw-black;
+    border: none;
+    border-radius: 0;
+    letter-spacing: 0.1em; // 增加字距更顯專業感
+    box-shadow: 6px 6px 0px rgba($ds-primary-dark, 0.2); // [重點] 硬派陰影設定
+    transition: $ds-transition;
+    // [重點] 點擊時的沉降感回饋
+    &:active { 
+      transform: translate(3px, 3px); // 按鈕往右下位移
+      box-shadow: 0px 0px 0px;        // 陰影同時消失，模擬按下實體鍵的感覺
+    }
+
+    &:hover {
+      filter: brightness(1.1); // 懸浮時稍微變亮
+    }
+  }
+}

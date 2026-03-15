@@ -1,0 +1,20 @@
+// 1. 導入 Noto Sans TC
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap');
+
+// 2. 強力 Reset：確保底色延伸到整個視窗
+:global(html), :global(body), :global(#root) {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F7F1EA !important; // 設計稿米色
+  font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+.product-detail-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column; // 讓 Section 1 跟 Section 2 由上而下排列
+  align-items: center;    // 讓內容水平居中
+  background-color: #F7F1EA;
+}

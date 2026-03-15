@@ -1,0 +1,197 @@
+@import "./assets/ds_tokens";
+
+.flavor-analysis-section {
+  background-color: $ds-bg-cream; 
+  padding: $ds-section-padding;
+  width: 100%;
+}
+
+.analysis-left {
+  padding-right: 40px;
+
+  //大標題
+  .analysis-header {
+    margin-bottom: 32px;
+    
+    .subtitle {   
+      @include ds-h8;
+      color: $ds-text-light;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .title {   //大標題樣式 
+      @include ds-display-d4; 
+      color: $ds-primary-dark;
+      margin-top: 0; //跟英文字的距離
+      margin-bottom: 32px;
+    }
+
+    .description {   //內文
+      @include ds-t6;
+      color: $ds-primary-dark;
+      line-height: 1.8;
+      max-width: 520px;
+    }
+  }
+
+  //商品詳情
+  .info-grid {   //調整三個項目的水平間距
+    gap: 120px;
+    margin-bottom: 60px;
+
+    .info-item {
+      label {   //小標題（處理法、烘培、產地）
+        @include ds-t8; 
+        color: $ds-text-light; 
+        display: block; 
+        margin-bottom: 4px; 
+      }
+      span { //標題下的文字 
+        @include ds-t7;
+        color: $ds-primary-dark; 
+      }
+    }
+  }
+
+  .radar-group {
+    gap: 48px;
+    
+    .radar-svg { 
+      width: 260px; 
+      height: auto;
+    }
+
+    .flavour-list {  //雷達跟風味區塊
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: flex;
+        align-items: center;  //圖示與文字垂直置中
+        gap: 24px;  //Icon 與文字的水平距離
+        margin-bottom: 32px;  //每一列之間的上下間距
+
+        &:last-child { margin-bottom: 0; }
+
+        //雷達圖大小
+        img { 
+          width: 40px; 
+          height: 40px; 
+          object-fit: contain;
+        }
+
+        //英文風味標題 (如 BLACKBERRY JAM)
+        strong { 
+          @include ds-h8; 
+          color: $ds-primary-dark; 
+          display: block; 
+          margin-bottom: 4px //跟下方文字間距
+        }
+        //調整中文描述
+        small { 
+          @include ds-t8; 
+          color: $ds-text-light;
+          display: block; 
+        }
+      }
+    }
+  }
+}
+
+.analysis-right {
+  .image-card {
+    width: 100%;
+    max-width: $ds-container-max / 2; // 約 648px
+    aspect-ratio: 1 / 1; 
+    background-color: $ds-primary-dark;
+    position: relative;
+    overflow: hidden;
+
+    .bg-image { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      opacity: 0.6; 
+    }
+
+    .card-overlay {
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .timeline-group {
+        padding-left: 32px;
+        position: relative;
+
+        .note-item { //這組文字與下一組文字（MIDDLE/FINISH）的上下距離
+          margin-bottom: 24px;
+          position: relative;
+
+          // --- 分段漸層線條 ---
+          &::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 12px;
+            width: 1px;
+            height: 100%;
+            // 使用你定義的白透明度 Token
+            background: linear-gradient(to bottom, 
+              $ds-white-03 0%, // 80% 白
+              $ds-white-02 80%, // 10% 白
+              transparent 100%
+            );
+          }
+          &:last-child::before { display: none; }
+
+          // --- 圓點 ---
+          &::after {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 0;
+            width: 9px;
+            height: 9px;
+            background-color: $ds-white-03;
+            border-radius: 50%;
+          }
+
+          h5 { //英文/階段標題 (如：FRONT / 前段)
+            @include ds-h8;
+            color: $ds-text-light; 
+            margin-bottom: 4px;  //標題與下方描述內容的距離
+          }
+          p {  //具體的描述內容 (如：以麝香葡萄與白花香...)
+            @include ds-t6; // 16px/Normal
+            color: $ds-bg-cream; 
+            margin: 0;
+          }
+        }
+      }
+
+      .pro-tips { //「風味點評」區塊
+        border-top: 1px solid $ds-white-02;
+        padding-top: 24px;
+
+        strong { 
+          @include ds-h8; 
+          color: $ds-text-light; 
+          display: block; 
+          margin-bottom: 8px; 
+        }
+        p { 
+          @include ds-t6; 
+          color: $ds-white; 
+        }
+      }
+    }
+  }
+}
+
+// RWD
+@media (max-width: 991px) {
+  .analysis-left { padding-right: 0; margin-bottom: 60px; }
+  .analysis-right .image-card { aspect-ratio: auto; height: 600px; }
+}

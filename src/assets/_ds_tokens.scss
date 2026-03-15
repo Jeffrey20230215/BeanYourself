@@ -1,0 +1,190 @@
+// --- 1. 色彩系統 (Color Palette) ---
+// 基礎色階 (Base Palette) - 依照設計圖
+$ds-primary-01: #F7F1EA;
+$ds-primary-02: #EDE7E0;
+$ds-primary-03: #E3DDD6;
+$ds-primary-04: #E6D5C3;
+$ds-primary-05: #D9D2CB;
+$ds-primary-06: #CFC8C1;
+$ds-primary-07: #BAB4AD;
+$ds-primary-08: #A69F98;
+$ds-primary-09: #928B84;
+$ds-primary-10: #7E7670;
+$ds-primary-11: #6A625B;
+$ds-primary-12: #554D47;
+$ds-primary-13: #2D241E;
+
+$ds-white-01:   #FFFFFF;
+$ds-white-02:   rgba(255, 255, 255, 0.1); // white 01 (10%)
+$ds-white-03:   rgba(255, 255, 255, 0.8); // white 01 (80%)
+$ds-red-01:     #ef4444;
+
+// 語義化別名 (Functional Aliases) - 方便開發記憶
+$ds-primary-dark: $ds-primary-13;   
+$ds-bg-cream:     $ds-primary-01;   
+$ds-tag-gray:     $ds-primary-05;   
+$ds-text-main:    $ds-primary-13;   
+$ds-text-muted:   $ds-primary-10;   
+$ds-text-light:   $ds-primary-07;   
+$ds-white:        $ds-white-01;
+
+// --- 2. 版面與間距 ---
+$ds-container-max: 1296px;    
+$ds-section-padding: 80px 0;  
+
+// --- 3. 字體架構 (Typography) ---
+$ds-font-family: 'Noto Sans', sans-serif;
+
+//Display (更大的字體，用來吸引目光的)
+$ds-display-1: 240px;  $ds-lh-d1: 120%;
+$ds-display-2: 140px;  $ds-lh-d2: 120%;
+$ds-display-3: 96px;  $ds-lh-d3: 120%;
+$ds-display-4: 64px;  $ds-lh-d4: 120%;
+$ds-display-2: 32px;  $ds-lh-d2: 120%;
+
+
+// Heading 數值 (H1-H9)
+$ds-fs-h1: 40px;  $ds-lh-h1: 48px;
+$ds-fs-h2: 32px;  $ds-lh-h2: 38.4px;
+$ds-fs-h3: 28px;  $ds-lh-h3: 33.6px;
+$ds-fs-h4: 24px;  $ds-lh-h4: 28.8px;
+$ds-fs-h5: 20px;  $ds-lh-h5: 24px;
+$ds-fs-h6: 18px;  $ds-lh-h6: 21.6px;
+$ds-fs-h7: 16px;  $ds-lh-h7: 19.2px;
+$ds-fs-h8: 14px;  $ds-lh-h8: 16.8px;
+$ds-fs-h9: 12px;  $ds-lh-h9: 14.4px;
+
+// Body 數值 (T1-T9)
+$ds-fs-t1: 40px;  $ds-lh-t1: 60px;
+$ds-fs-t2: 32px;  $ds-lh-t2: 48px;
+$ds-fs-t3: 28px;  $ds-lh-t3: 42px;
+$ds-fs-t4: 24px;  $ds-lh-t4: 36px;
+$ds-fs-t5: 20px;  $ds-lh-t5: 30px;
+$ds-fs-t6: 18px;  $ds-lh-t6: 27px;
+$ds-fs-t7: 16px;  $ds-lh-t7: 24px;
+$ds-fs-t8: 14px;  $ds-lh-t8: 21px;
+$ds-fs-t9: 12px;  $ds-lh-t9: 18px;
+
+// 字重
+$ds-fw-black: 900;
+$ds-fw-bold: 700;
+$ds-fw-normal: 500;
+$ds-fw-light: 300;
+
+// --- 4. 組合 Mixins (排版組合包) ---
+// 建立目的：確保字級與行高成對，且統一字體。
+// 電腦抓取邏輯：當你呼叫 @include ds-h1 時，它會展開這 4 行屬性。
+//有缺的看是缺哪個可以自己新增
+
+
+//超大字體
+@mixin ds-display-d1 {
+  font-size: $ds-display-1;
+  line-height: $ds-lh-d1;
+  font-weight: $ds-fw-black;
+  letter-spacing: -0.02em;
+}
+@mixin ds-display-d2 {
+  font-size: $ds-display-2;
+  line-height: $ds-lh-d2;
+  font-weight: $ds-fw-black;
+  letter-spacing: 0em;
+}
+@mixin ds-display-d3 {
+  font-size: $ds-display-3;
+  line-height: $ds-lh-d3;
+  font-weight: $ds-fw-black;
+  letter-spacing: 0em;
+}
+@mixin ds-display-d4 {
+  font-size: $ds-display-4;
+  line-height: $ds-lh-d4;
+  font-weight: $ds-fw-black;
+  letter-spacing: 0em;
+}
+@mixin ds-display-d5 {
+  font-size: $ds-display-5;
+  line-height: $ds-lh-d5;
+  font-weight: $ds-fw-light;
+  letter-spacing: 0em;
+}
+
+//標題
+@mixin ds-h1 {
+  font-family: $ds-font-family;
+  font-size: $ds-fs-h1;
+  line-height: $ds-lh-h1;
+  font-weight: $ds-fw-black;
+}
+@mixin ds-h2 {
+  font-family: $ds-font-family; 
+  font-size: $ds-fs-h2; 
+  line-height: $ds-lh-h2; 
+  font-weight: $ds-fw-black;
+}
+@mixin ds-h3 {
+  font-family: $ds-font-family; 
+  font-size: $ds-fs-h3; 
+  line-height: $ds-lh-h3; 
+  font-weight: $ds-fw-bold;
+}
+@mixin ds-h8 {
+  font-family: $ds-font-family;
+  font-size: $ds-fs-h8;
+  line-height: $ds-lh-h8;
+  font-weight: $ds-fw-black;
+  letter-spacing: 0.1em;
+}
+
+@mixin ds-h9 {
+  font-family: $ds-font-family;
+  font-size: $ds-fs-h9;
+  line-height: $ds-lh-h9;
+  font-weight: $ds-fw-black;
+  letter-spacing: 0.1em;
+}
+
+
+//內文
+@mixin ds-t6 {
+  font-family: $ds-font-family; 
+  font-size: $ds-fs-t6; 
+  line-height: $ds-lh-t6; 
+  font-weight: $ds-fw-bold;
+}
+
+@mixin ds-t7 {
+  font-family: $ds-font-family; 
+  font-size: $ds-fs-t7; 
+  line-height: $ds-lh-t7; 
+  font-weight: $ds-fw-normal;
+}
+@mixin ds-t8 {
+  font-family: $ds-font-family; 
+  font-size: $ds-fs-t8; 
+  line-height: $ds-lh-t8; 
+  font-weight: $ds-fw-normal;
+}
+@mixin ds-t8-bold {
+  font-family: $ds-font-family; 
+  font-size: $ds-fs-t8; 
+  line-height: $ds-lh-t8; 
+  font-weight: $ds-fw-bold;
+}
+@mixin ds-t9 {
+  font-family: $ds-font-family; 
+  font-size: $ds-fs-t9; 
+  line-height: $ds-lh-t9; 
+  font-weight: $ds-fw-normal;
+}
+@mixin ds-t9-bold {
+  font-family: $ds-font-family; 
+  font-size: $ds-fs-t9; 
+  line-height: $ds-lh-t9; 
+  font-weight: $ds-fw-bold;
+}
+
+// --- 5. 元件規範 --- (維持不變)
+$ds-card-h: 232px;            
+$ds-border-style: 1px solid $ds-tag-gray;
+$ds-transition: all 0.3s ease;
