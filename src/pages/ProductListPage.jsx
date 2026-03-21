@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import CatalogProductCard from '../components/product/CatalogProductCard';
 import {
@@ -8,6 +9,33 @@ import {
 import './ProductListPage.scss';
 
 export default function ProductListPage() {
+  const [apiProducts, setApiProducts] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function fetchProducts() {
+      try {
+        const response = await fetch('https://ec-course-api.hexschool.io/v2/api/angela-hex/products/all');
+        const data = await response.json();
+
+        if (isMounted) {
+          setApiProducts(data?.products || data?.data?.products || []);
+        }
+      } catch (error) {
+        if (isMounted) {
+          setApiProducts([]);
+        }
+      }
+    }
+
+    fetchProducts();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <div className="product-list-page">
       <section className="product-list-page__hero">
@@ -71,9 +99,23 @@ export default function ProductListPage() {
       </section>
 
       <section className="layout-container product-list-page__grid">
-        {catalogProducts.map((product) => (
-          <CatalogProductCard key={product.id} product={product} ctaLabel="→" />
-        ))}
+        {catalogProducts.map((product, index) => {
+          const apiProduct = apiProducts[index];
+          const mergedProduct = apiProduct
+            ? {
+                ...product,
+                id: apiProduct.id || product.id,
+                name: apiProduct.title || product.name,
+                profile: apiProduct.description || product.profile,
+                price: apiProduct.price ?? product.price,
+              }
+            : product;
+
+          return (
+            <CatalogProductCard key={mergedProduct.id} product={mergedProduct} ctaLabel="→" />
+          );
+        }
+        )}
       </section>
 
       <section className="layout-container product-list-page__action">
