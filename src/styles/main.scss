@@ -1,0 +1,238 @@
+@import '../components/Navbar';
+@import '../pages/ProductDetailPage';
+
+:root {
+  font-family: 'Noto Sans TC', 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #3c2518;
+  background:
+    radial-gradient(circle at top, rgba(183, 126, 78, 0.14), transparent 28%),
+    linear-gradient(180deg, #f7f1ea 0%, #f3ece3 56%, #efe4d7 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --color-text: #3c2518;
+  --color-muted: #6f5847;
+  --color-accent: #b77e4e;
+  --color-chip: #ddd0c2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f7f1ea;
+  color: var(--color-text);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+a {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-main {
+  padding-bottom: 3rem;
+}
+
+.layout-container {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+}
+
+.section-label {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero-section {
+  padding-block: 6rem 4rem;
+}
+
+.hero-section__inner {
+  max-width: 860px;
+}
+
+.hero-section h1,
+.intro-section h2,
+.article-section h2,
+.quiz-card h2 {
+  line-height: 0.98;
+}
+
+.hero-section h1 {
+  margin: 0.75rem 0 1rem;
+  font-size: clamp(3rem, 8vw, 6rem);
+}
+
+.hero-section__text,
+.intro-section p,
+.article-section__header p,
+.article-card p,
+.quiz-card p {
+  color: var(--color-muted);
+  font-size: 1.02rem;
+}
+
+.hero-section__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0 1.4rem;
+  border: 1px solid var(--color-text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button-primary {
+  background: var(--color-text);
+  color: #f7f1ea;
+}
+
+.intro-section,
+.article-section,
+.quiz-section {
+  padding-block: 1rem 4rem;
+}
+
+.intro-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  gap: 2rem;
+}
+
+.intro-section h2,
+.quiz-card h2 {
+  margin: 0.4rem 0 0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.article-section__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.article-section h2 {
+  margin: 0.4rem 0 0;
+  font-size: clamp(2.4rem, 5vw, 4.6rem);
+}
+
+.article-section h2 span {
+  display: block;
+  color: var(--color-accent);
+}
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  border: 1px solid rgba(60, 37, 24, 0.18);
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.article-card + .article-card {
+  border-left: 0;
+}
+
+.article-card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.article-card__image {
+  width: 100%;
+  aspect-ratio: 0.92;
+  margin-block: 1rem;
+  border: 1px solid rgba(60, 37, 24, 0.18);
+  background: linear-gradient(135deg, #d6cabf, #efe6dd);
+}
+
+.article-card h3 {
+  margin: 0 0 0.8rem;
+  font-size: 1.28rem;
+}
+
+.article-card a {
+  width: fit-content;
+  margin-top: auto;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-text);
+}
+
+.quiz-card {
+  border: 1px solid rgba(60, 37, 24, 0.22);
+  background: rgba(255, 255, 255, 0.36);
+  padding: 2rem;
+}
+
+@media (max-width: 920px) {
+  .layout-container {
+    width: min(100% - 1.5rem, 1200px);
+  }
+
+  .intro-section,
+  .article-section__header,
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-grid {
+    gap: 1rem;
+  }
+
+  .article-card + .article-card {
+    border-left: 1px solid rgba(60, 37, 24, 0.18);
+  }
+}
