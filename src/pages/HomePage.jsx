@@ -1,33 +1,23 @@
+import Footer from '../components/Footer';
+import HomeBrandStorySection from '../components/home/HomeBrandStorySection';
+import HomeFeaturedBeansSection from '../components/home/HomeFeaturedBeansSection';
+import HomeHeroSection from '../components/home/HomeHeroSection';
+import HomePuritySection from '../components/home/HomePuritySection';
+import HomeReviewsSection from '../components/home/HomeReviewsSection';
+import './HomePage.scss';
+
 export default function HomePage() {
   return (
-    <>
-      <section className="hero-section">
-        <div className="layout-container hero-section__inner">
-          <p className="section-label">Merged Layout</p>
-          <h1>豆自己。</h1>
-          <p className="hero-section__text">
-            在香氣中，找到最純粹的自己。
-          </p>
-          <div className="hero-section__actions">
-            <a className="button-primary" href="#/product">
-              查看商品詳情
-            </a>
-            <a className="button-secondary" href="#/#articles">
-              前往文章區塊
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="layout-container intro-section" id="story">
-        <div>
-          <p className="section-label">Brand Story</p>
-          <h2>品牌故事、文章入口與商品頁導覽，現在都在同一套版型語言裡。</h2>
-        </div>
-        <p>
-          我先把分支中最重要的 UI 骨架合併成一個能正常跑的 React 專案，這樣後續修圖片路徑、補真實資料時不會再牽動整體結構。
-        </p>
-      </section>
+    <div className="home-page">
+      <HomeHeroSection />
+      <HomePuritySection />
+      <div className="home-divider" aria-hidden="true" />
+      <HomeFeaturedBeansSection />
+      <div className="home-divider" aria-hidden="true" />
+      <HomeReviewsSection />
+      <div className="home-divider" aria-hidden="true" />
+      <HomeBrandStorySection />
+      <div className="home-divider" aria-hidden="true" />
 
       <section className="layout-container article-section" id="articles">
         <div className="article-section__header">
@@ -63,13 +53,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="layout-container quiz-section" id="quiz">
-        <div className="quiz-card">
-          <p className="section-label">Future Section</p>
-          <h2>人格測驗入口已預留。</h2>
-          <p>現在先保留資訊架構，等功能分支完成後可以直接掛進來。</p>
-        </div>
-      </section>
-    </>
+      <Footer />
+    </div>
   );
 }
