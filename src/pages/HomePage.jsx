@@ -4,9 +4,9 @@ export default function HomePage() {
       <section className="hero-section">
         <div className="layout-container hero-section__inner">
           <p className="section-label">Merged Layout</p>
-          <h1>首頁現在承接 Navbar 與 Section 5，商品詳情獨立成頁。</h1>
+          <h1>豆自己。</h1>
           <p className="hero-section__text">
-            目前先把 UI 結構整合完成，後續可以再把真實圖片、API 與更多首頁區塊接回來。
+            在香氣中，找到最純粹的自己。
           </p>
           <div className="hero-section__actions">
             <a className="button-primary" href="#/product">
@@ -39,7 +39,7 @@ export default function HomePage() {
             </h2>
           </div>
           <p>
-            這裡保留 Section 5 的首頁定位，用三張文章卡片展示內容感，圖片先改成 placeholder。
+            揭開風味秘密，讓每一次沖煮都成為專屬你的療癒時刻。
           </p>
         </div>
 
@@ -56,7 +56,7 @@ export default function HomePage() {
               </div>
               <div className="article-card__image" />
               <h3>{title}</h3>
-              <p>文章資料之後可以直接改接 axios API，卡片結構不用再重寫。</p>
+              <p>咖啡豆要放冰箱嗎？教你 30 天都像剛烘好的保存密技</p>
               <a href="#/">Read More</a>
             </article>
           ))}
