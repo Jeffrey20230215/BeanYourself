@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import HomeBrandStorySection from '../components/home/HomeBrandStorySection';
 import HomeFeaturedBeansSection from '../components/home/HomeFeaturedBeansSection';
@@ -7,6 +8,33 @@ import HomeReviewsSection from '../components/home/HomeReviewsSection';
 import './HomePage.scss';
 
 export default function HomePage() {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function fetchArticles() {
+      try {
+        const response = await fetch('https://ec-course-api.hexschool.io/v2/api/angela-hex/articles');
+        const data = await response.json();
+
+        if (isMounted) {
+          setArticles(data?.articles || []);
+        }
+      } catch (error) {
+        if (isMounted) {
+          setArticles([]);
+        }
+      }
+    }
+
+    fetchArticles();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <div className="home-page">
       <HomeHeroSection />
@@ -34,19 +62,15 @@ export default function HomePage() {
         </div>
 
         <div className="article-grid">
-          {[
-            '咖啡豆保存密技，讓風味維持更久',
-            '手沖新手也能快速上手的三個關鍵',
-            '日曬、水洗與焙度，如何挑到喜歡的味道',
-          ].map((title, index) => (
-            <article className="article-card" key={title}>
+          {articles.slice(0, 3).map((article, index) => (
+            <article className="article-card" key={article.id || article.title || index}>
               <div className="article-card__meta">
-                <span>{['保存密技', '新手教學', '選購指南'][index]}</span>
+                <span>{article.tag?.[0] || ''}</span>
                 <span>2025/09/10</span>
               </div>
               <div className="article-card__image" />
-              <h3>{title}</h3>
-              <p>咖啡豆要放冰箱嗎？教你 30 天都像剛烘好的保存密技</p>
+              <h3>{article.title || ''}</h3>
+              <p>{article.description || ''}</p>
               <a href="#/">Read More</a>
             </article>
           ))}
