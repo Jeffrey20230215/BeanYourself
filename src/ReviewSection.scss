@@ -53,14 +53,14 @@
     // 2. 星星區域 (Gap: 4px)
     .stars {
       display: flex;     
-      gap: 4.31px;                  // Figma: 星星間距 4.31px
-      margin-bottom: 4px;           // Figma: rating 下方 Gap 4px
-      height: 20px;                 // Figma: 20px
+      gap: 4px;                
+      margin-bottom: 4px;    
+      height: 21px;
       align-items: center;
 
       img {
-        width: 11.37px;             // Figma: 11.37px
-        height: 10.83px;            // Figma: 10.83px
+        width: 11.37px;
+        height: 10.83px;
       }
     }
 
