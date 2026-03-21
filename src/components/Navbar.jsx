@@ -2,7 +2,7 @@ import './Navbar.scss';
 
 const navItems = [
   { label: '品牌故事', href: '#/' },
-  { label: '商品列表', href: '#/product' },
+  { label: '商品列表', href: '#/products' },
   { label: '咖啡文章', href: '#/#articles' },
   { label: '人格測驗', href: '#/#quiz' },
 ];
@@ -24,7 +24,7 @@ export default function Navbar({ currentPath }) {
             const isActive =
               item.href === '#/'
                 ? currentPath === '/'
-                : item.href === '#/product' && currentPath === '/product';
+                : item.href === '#/products' && currentPath === '/products';
 
             return (
               <a

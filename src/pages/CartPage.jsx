@@ -24,7 +24,7 @@ export default function CartPage() {
           <p className="section-label">Cart</p>
           <h1>購物車</h1>
         </div>
-        <a href="#/product">繼續選購</a>
+        <a href="#/products">繼續選購</a>
       </section>
 
       <div className="layout-container cart-page__divider" aria-hidden="true" />

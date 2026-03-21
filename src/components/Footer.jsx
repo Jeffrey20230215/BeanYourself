@@ -2,7 +2,7 @@ import './Footer.scss';
 
 const footerLinks = [
   { label: '品牌故事', href: '#/' },
-  { label: '產品列表', href: '#/product' },
+  { label: '產品列表', href: '#/products' },
   { label: '咖啡文章', href: '#/#articles' },
   { label: '咖啡人格測驗', href: '#/#quiz' },
 ];

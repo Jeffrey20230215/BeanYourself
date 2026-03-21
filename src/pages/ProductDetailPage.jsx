@@ -1,3 +1,4 @@
+import CatalogProductCard from '../components/product/CatalogProductCard';
 import './ProductDetailPage.scss';
 
 const galleryImages = ['Front Pack', 'Angle Shot', 'Brewing Scene', 'Detail Shot'];
@@ -162,27 +163,6 @@ function ProductReviewCard({ item }) {
           <span>{item.date}</span>
         </div>
       </footer>
-    </article>
-  );
-}
-
-function ProductCard({ product }) {
-  return (
-    <article className="product-recommendation-card">
-      <PlaceholderBlock
-        label={product.image}
-        className="product-recommendation-card__image"
-      />
-      <div className="product-recommendation-card__body">
-        <div>
-          <h3>{product.name}</h3>
-          <p>{product.profile}</p>
-        </div>
-        <div className="product-recommendation-card__footer">
-          <strong>NTD$ {product.price}</strong>
-          <a href="#/product">View</a>
-        </div>
-      </div>
     </article>
   );
 }
@@ -398,7 +378,17 @@ export default function ProductDetailPage() {
 
         <div className="product-recommendations-section__grid">
           {relatedProducts.map((product) => (
-            <ProductCard key={product.name} product={product} />
+            <CatalogProductCard
+              key={product.name}
+              product={{
+                ...product,
+                category: '風味推薦',
+                roast: '精選',
+                weight: '半磅',
+                imageLabel: product.image,
+                tone: 'warm',
+              }}
+            />
           ))}
         </div>
 

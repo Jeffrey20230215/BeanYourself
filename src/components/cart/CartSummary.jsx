@@ -55,9 +55,9 @@ export default function CartSummary({ summary, promoCode, onPromoCodeChange }) {
           <strong>{formatCurrency(summary.total)}</strong>
         </div>
 
-        <button type="button" className="cart-summary__checkout">
+        <a href="#/checkout" className="cart-summary__checkout">
           前往結帳 →
-        </button>
+        </a>
       </div>
     </aside>
   );
