@@ -38,9 +38,9 @@ export default function Navbar({ currentPath }) {
           })}
         </nav>
 
-        <div className="navbar__actions" aria-hidden="true">
+        <div className="navbar__actions">
           <span>Search</span>
-          <span>Cart</span>
+          <a href="#/cart">Cart</a>
           <span>Profile</span>
         </div>
       </div>

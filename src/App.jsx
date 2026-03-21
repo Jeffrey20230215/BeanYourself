@@ -1,10 +1,13 @@
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
+import CartPage from './pages/CartPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import { useHashRoute } from './hooks/useHashRoute';
 
 function renderPage(pathname) {
   switch (pathname) {
+    case '/cart':
+      return <CartPage />;
     case '/product':
       return <ProductDetailPage />;
     default:
