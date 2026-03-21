@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { getCartPageData } from '../services/cartService';
+import { apiClient } from '../services/apiClient';
 
 const SHIPPING_FEE = 80;
 const FREE_SHIPPING_THRESHOLD = 1200;
@@ -8,8 +9,29 @@ function clampQuantity(quantity) {
   return Math.max(1, quantity);
 }
 
+function mergeCartItems(mockItems, carts) {
+  if (!carts.length) {
+    return mockItems;
+  }
+
+  return carts.map((cart, index) => {
+    const mockItem = mockItems[index] || mockItems[index % mockItems.length] || {};
+
+    return {
+      ...mockItem,
+      id: cart.id || mockItem.id,
+      name: cart.product?.title || mockItem.name,
+      sizeLabel: cart.product?.unit || mockItem.sizeLabel,
+      grindLabel: cart.product?.category || mockItem.grindLabel,
+      price: cart.product?.price ?? mockItem.price,
+      quantity: cart.qty ?? mockItem.quantity,
+    };
+  });
+}
+
 export function useCartPage() {
   const [cartData, setCartData] = useState({ items: [], recommendations: [] });
+  const [apiCarts, setApiCarts] = useState([]);
   const [promoCode, setPromoCode] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -22,7 +44,30 @@ export function useCartPage() {
 
       if (isMounted) {
         setCartData(data);
-        setIsLoading(false);
+      }
+
+      try {
+        const response = await apiClient.get('https://ec-course-api.hexschool.io/v2/api/angela-hex/cart');
+        const carts = response.data?.data?.carts || [];
+
+        if (isMounted) {
+          setApiCarts(carts);
+          setCartData((current) => ({
+            ...current,
+            recommendations: current.recommendations.length
+              ? current.recommendations
+              : data.recommendations,
+            items: mergeCartItems(data.items, carts),
+          }));
+        }
+      } catch (error) {
+        if (isMounted) {
+          setApiCarts([]);
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     }
 
@@ -97,6 +142,7 @@ export function useCartPage() {
 
   return {
     items: cartData.items,
+    apiCarts,
     recommendations: cartData.recommendations,
     promoCode,
     setPromoCode,
